@@ -165,7 +165,7 @@
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
       var board = this.rows();
-      for (var i = 0; i < board.length; i++) {
+      for (var i = -3; i < 3; i++) {
         if(this.hasMajorDiagonalConflictAt([i])){
           return true;
         }
@@ -185,14 +185,13 @@
       console.log("colIndex: 186",col)
       var row= 0;
       var count = 0;
-      for (var i = col; i < board.length; i++) {
-        console.log("line 190, current board array", board[i][row])
-          if (board[i][col] === 1){
-          count++
-         } 
-        col++
-        row++
-      }
+      for (var i = 0; i < board.length; i++) {
+        if(board[i][col] === 1){
+          count ++
+        }
+        col --
+      };
+     
       if(count === 0 || count <= 1){
         return false
       }
